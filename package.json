@@ -1,0 +1,15 @@
+{
+    "name": "mistral",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Yoza Wiratama",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^2.9.0",
+        "mkpath": "^1.0.0"
+    }
+}
