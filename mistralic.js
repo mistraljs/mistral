@@ -5,13 +5,12 @@
  */
 
 var program = require('commander');
-var mkpath = require('mkpath');
+var _ = require('underscore');
 var fs = require('fs');
 var clone = require("nodegit").Clone.clone;
-console.log('download git');
-// Clone a given repository into a specific folder. 
+var execSync = require('child_process').execSync,
+    child;
 
-console.log('Hello, World!');
 program
     .version('0.0.1')
     .arguments('<cmd> [env]')
@@ -23,7 +22,28 @@ program
 program.parse(process.argv);
 
 if (typeof cmdValue === 'undefined') {
-    console.error('no command given!');
+    var packages = fs.readFileSync('./.mistral/packages').toString();
+    //console.log(packages);
+
+    var pkgs = packages.split('\n');
+    //console.log(pkgs);
+    _.each(pkgs,function(element, index, list){
+        //console.log(element);
+        console.log("install : " + element);
+        child = execSync('npm install --prefix ./assets/ '+ element,
+            function (error, stdout, stderr) {
+                //console.log('stdout: ' + stdout);
+                //console.log('stderr: ' + stderr);
+                //if (error !== null) {
+                //    console.log('exec error: ' + error);
+                //}
+            });
+        console.log('finish installing ' + element);
+
+    });
+    console.log('Your app run on http://localhost:9000');
+    execSync('http-server -p 9000 -a localhost');
+
     process.exit(1);
 }
 if (cmdValue === 'create') {
@@ -34,15 +54,18 @@ if (cmdValue === 'create') {
         clone("https://github.com/mistraljs/startup", envValue, null)
             // Display information about the blob. 
             .then(function (blob) {
-                console.log(blob);
-                // Show the name, sha, and filesize in bytes. 
-                console.log(blob.entry.name() + blob.entry.sha() + blob.size() + "b");
-
-                // Show a spacer. 
-                console.log(Array(72).join("=") + "\n\n");
-
-                // Show the entire file. 
-                console.log(String(blob));
+                //console.log(blob);
+                //// Show the name, sha, and filesize in bytes.
+                //console.log(blob.entry.name() + blob.entry.sha() + blob.size() + "b");
+                //
+                //// Show a spacer.
+                //console.log(Array(72).join("=") + "\n\n");
+                //
+                //// Show the entire file.
+                //console.log(String(blob));
+                console.log('Created!');
+                console.log('> cd '+ envValue);
+                console.log('> mistral');
             })
             .catch(function (err) {
                 console.log(err);
@@ -52,5 +75,5 @@ if (cmdValue === 'create') {
         console.log("Mistral Create <project name>");
     }
 }
-console.log('command:', cmdValue);
-console.log('environment:', envValue || "no environment given");
+//console.log('command:', cmdValue);
+//console.log('environment:', envValue || "no environment given");

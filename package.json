@@ -1,6 +1,6 @@
 {
   "name": "mistralic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,13 +22,20 @@
   ],
   "preferGlobal": "true",
   "bin": {
-    "mistralic": "./bin/mistralic.js"
+    "mistral": "./bin/mistralic.js"
   },
   "author": "Yoza Wiratama",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
-    "mkpath": "^1.0.0",
-    "nodegit": "^0.6.3"
+    "nodegit": "^0.6.3",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0"
+  },
+  "scripts": {
+    "preinstall": "npm i -g http-server"
   }
 }
