@@ -1,29 +1,34 @@
 {
-    "name": "mistralic",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/mistraljs/mistral.git"
-    },
-    "keywords": [
+  "name": "mistralic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mistraljs/mistral.git"
+  },
+  "keywords": [
     "mvrvm",
     "mvc",
     "router",
     "route",
     "backbone",
     "mvvm",
-        "template",
-        "mustache"
+    "template",
+    "mustache"
   ],
-    "author": "Yoza Wiratama",
-    "license": "MIT",
-    "dependencies": {
-        "commander": "^2.9.0",
-        "mkpath": "^1.0.0"
-    }
+  "preferGlobal": "true",
+  "bin": {
+    "mistralic": "./bin/mistralic.js"
+  },
+  "author": "Yoza Wiratama",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "mkpath": "^1.0.0",
+    "nodegit": "^0.6.3"
+  }
 }
