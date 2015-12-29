@@ -1,6 +1,6 @@
 {
   "name": "mistralic",
-  "version": "0.0.2",
+  "version": "0.0.23",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -28,14 +28,13 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
+    "connect": "^3.4.0",
     "nodegit": "^0.6.3",
+    "serve-static": "^1.10.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0"
-  },
-  "scripts": {
-    "preinstall": "npm i -g http-server"
   }
 }

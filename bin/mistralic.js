@@ -10,9 +10,11 @@ var fs = require('fs');
 var clone = require("nodegit").Clone.clone;
 var execSync = require('child_process').execSync,
     child;
+var connect = require('connect');
+var serveStatic = require('serve-static');
 
 program
-    .version('0.0.1')
+    .version('0.0.2')
     .arguments('<cmd> [env]')
     .action(function (cmd, env) {
         cmdValue = cmd;
@@ -41,10 +43,10 @@ if (typeof cmdValue === 'undefined') {
         console.log('finish installing ' + element);
 
     });
-    console.log('Your app run on http://localhost:9000');
-    execSync('http-server -p 9000 -a localhost');
-
-    process.exit(1);
+    console.log('Your app run on http://localhost:8000');
+    //execSync('http-server -p 9000 -a localhost');
+    connect().use(serveStatic(__dirname)).listen(8000);
+    //process.exit(1);
 }
 if (cmdValue === 'create') {
     if (envValue) {
