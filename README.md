@@ -3,7 +3,6 @@ A CLI app for mistraljs
 
 # Installation
 ```
-npm install -g http-server
 npm install -g mistralic
 ```
 # Create new Project
@@ -11,8 +10,9 @@ npm install -g mistralic
 > mistral create project_name
 > mistral create todo
 ```
-# Run
+# Build
+build will compile modules.json and create `./build/` directory with all packages combined.
 ```
 > cd todo
-> mistral
+> mistral build
 ```
